@@ -1,0 +1,78 @@
+[{
+  "annotations":[],
+  "predictions":
+  [{
+    "result":
+    [
+      {
+        "value":
+        {
+          "start":0,
+          "end":18,
+          "score": 0.70,
+          "text":"Diabetes insipidus",
+          "labels":["Diagnosis"]
+        },
+        "from_name":"label",
+        "to_name":"text",
+        "type":"labels"
+      },
+      {
+        "value":
+        {
+          "start":20,
+          "end":22,
+          "score": 0.80,
+          "text":"DI",
+          "labels":["Diagnosis"]
+        },
+        "from_name":"label",
+        "to_name":"text",
+        "type":"labels"
+      },
+      {
+        "value":
+        {
+          "start":213,
+          "end":215,
+          "score": 0.05,
+          "text":"DI",
+          "labels":["Diagnosis"]
+        },
+        "from_name":"label",
+        "to_name":"text",
+        "type":"labels"
+      },
+      {
+        "value":
+        {
+          "start":550,
+          "end":562,
+          "score": 0.50,
+          "text":"desmopressin",
+          "labels":["Drug"]
+        },
+        "from_name":"label",
+        "to_name":"text",
+        "type":"labels"
+      },
+      {
+        "value":
+        {
+          "start":564,
+          "end":575,
+          "score": 0.77,
+          "text":"Minirin(®)",
+          "labels":["Drug"]
+        },
+        "from_name":"label",
+        "to_name":"text",
+        "type":"labels"
+      }
+    ]
+  }],
+  "data":
+  {
+    "ner":"Diabetes insipidus (DI) is a rare complication of pregnancy. It is usually transient, being due to increased placental production of vasopressinase that inactivates circulating vasopressin. Gestational, transient DI occurs late in pregnancy and disappears few days after delivery. Acquired central DI can also occur during pregnancy, for example in a patient with hypophysitis or neuroinfundibulitis during late pregnancy or postpartum. Finally, pre-existing central or nephrogenic DI may occasionally be unmasked by pregnancy. Treatment with dDAVP (desmopressin, Minirin(®)) is very effective on transient DI of pregnancy and also on pre-existing or acquired central DI. Contrary to vasopressin, dDAVP is not degraded by vasopressinase. Nephrogenic DI is insensitive to dDAVP and is therefore more difficult to treat during pregnancy if fluid intake needs to be restricted."
+  }
+}]
