@@ -93,6 +93,14 @@ The JSON file is a list of JSON entries. There are four basic fields for each JS
 You can use [`label-studio-converter` library](https://github.com/heartexlabs/label-studio-converter)
 to convert most common labelling data formats into the right JSON format.
 
+The simplest way to determine the correct JSON format for pre-annotated texts is to
+* Fix a good labelling configuration
+* Import one or two raw texts
+* Annotate them manually and export the result as a full JSON
+* Rename the section `annotations` with the section `predictions`
+* Add additional fields to the section `predictions` and update labelling configuration to show them.
+After that you have a correct example of the input file and can generate it programmatically 
+
 ### Data export
 
 The annotations can be exported form the SQL database when it is properly configured or from the user interface.
