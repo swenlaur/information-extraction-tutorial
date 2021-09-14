@@ -1,0 +1,8 @@
+<View>
+  <Labels name="label" toName="text">
+    <Label value="Diagnosis" background="red"/>
+    <Label value="Drug" background="darkorange"/>
+    <Label value="Date" background="green"/>
+  </Labels>
+  <Text name="text" value="$ner" granularity="word"/>
+</View>
