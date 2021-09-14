@@ -1,9 +1,7 @@
 from copy import copy, deepcopy
 from ahocorasick import Automaton
 
-from typing import Dict
-from typing import List
-from typing import Generator
+from typing import Set, List, Dict, Union, Generator
 
 
 class SubstringTagger:
@@ -14,7 +12,7 @@ class SubstringTagger:
     The configuration is fixed during the initialisation and cannot be changed afterwards.
     """
 
-    def __init__(self, rules: Dict[str, dict], separators: str = ''):
+    def __init__(self, rules: Union[Dict[str, dict], Set[str]], separators: str = ''):
         """
         Extraction rules are in the form string --> dict where the dict contains the annotation for the match, e.g.
         Washington --> {type: capital, country: US},
@@ -30,11 +28,12 @@ class SubstringTagger:
         For multiple separator symbols, all pattern variants must be explicitly listed.
         """
 
-        if not isinstance(rules, dict):
-            raise ValueError('Extraction rules must be specified as Dict[str, dict]')
-        for pattern, annotation in rules.items():
-            if 'start' in annotation or 'end' in annotation:
-                raise ValueError("Attributes 'start' and 'end' are reserved do not use it inside annotations")
+        if isinstance(rules, dict):
+            for pattern, annotation in rules.items():
+                if 'start' in annotation or 'end' in annotation:
+                    raise ValueError("Attributes 'start' and 'end' are reserved do not use it inside annotations")
+        elif not isinstance(rules, set):
+            raise ValueError('Extraction rules must be specified as Dict[str, dict] or Set[str]')
 
         # Protect parameters against changes
         self.rules = deepcopy(rules)
@@ -42,7 +41,7 @@ class SubstringTagger:
 
         # Set up the automaton
         self.automaton = Automaton()
-        for pattern, attributes in self.rules.items():
+        for pattern in self.rules:
             self.automaton.add_word(pattern, len(pattern))
         self.automaton.make_automaton()
 
@@ -71,11 +70,20 @@ class SubstringTagger:
         for loc, value in self.automaton.iter(text):
             yield dict(start=loc - value + 1, end=loc + 1, text=text[loc - value + 1:loc + 1])
 
-    def decorate_spans(self, spans: Generator[dict, None, None]) -> List[Dict[str, any]]:
+    def decorate_spans(self, spans: Generator[dict, None, None]) -> Generator[dict, None, None]:
         """
         Add annotations to extracted spans based on the right-hand-side of the matching rule.
         """
 
+        # Do nothing if annotations are missing
+        if isinstance(self.rules, set):
+            current_span = next(spans, None)
+            while current_span is not None:
+                yield current_span
+                current_span = next(spans, None)
+            return
+
+        # Add annotations when they are specified
         current_span = next(spans, None)
         while current_span is not None:
 
