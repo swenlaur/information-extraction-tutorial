@@ -6,8 +6,8 @@
         "result": [
           {
             "value": {
-              "start": 20,
               "end": 23,
+              "start": 20,
               "text": "WHO",
               "labels": [
                 "ORG"
@@ -19,8 +19,8 @@
           },
           {
             "value": {
-              "start": 38,
               "end": 49,
+              "start": 38,
               "text": "Switzerland",
               "labels": [
                 "LOC"
@@ -32,8 +32,8 @@
           },
           {
             "value": {
-              "start": 54,
               "end": 65,
+              "start": 54,
               "text": "Ghebreyesus",
               "labels": [
                 "PER"

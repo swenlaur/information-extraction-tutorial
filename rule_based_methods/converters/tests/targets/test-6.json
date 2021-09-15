@@ -13,8 +13,8 @@
                 "ORG"
               ]
             },
-            "to_name": "text",
-            "from_name": "label",
+            "to_name": "event",
+            "from_name": "class",
             "type": "labels"
           },
           {
@@ -26,8 +26,8 @@
                 "LOC"
               ]
             },
-            "to_name": "text",
-            "from_name": "label",
+            "to_name": "event",
+            "from_name": "class",
             "type": "labels"
           },
           {
@@ -39,8 +39,8 @@
                 "PER"
               ]
             },
-            "to_name": "text",
-            "from_name": "label",
+            "to_name": "event",
+            "from_name": "class",
             "type": "labels"
           }
         ]

@@ -1,12 +1,12 @@
 import json
-from typing import List, Dict
+from typing import List, Dict, Union
 
 Layer = List[Dict[str, any]]
 REQUIRED_ATTRIBUTES = frozenset(('start', 'end', 'text'))
 
 
 def export_texts(
-        fname: str, texts: List[str], layers: List[Layer],
+        fname: str, texts: Union[List[str], str], layers: Union[List[Layer], Layer],
         label_attribute: str = 'label',
         other_attributes: List[str] = (),
         text_name: str = 'text', labelset_name: str = 'label'):
@@ -14,8 +14,8 @@ def export_texts(
     Writes texts together with annotations to file in the JSON format used by Label Studio.
     The length of texts and layers arguments must match or otherwise not all texts are annotated.
 
-    :param label_attribute:   an attribute in the layer that used as the entity type
-    :param other_attributes:  other attributes that characterise to the entity e.g. match score
+    label_attribute:   an attribute in the layer that used as the entity type
+    other_attributes:  other attributes that characterise to the entity e.g. match score
 
     The import to Label Studio succeeds if the labelling configuration corresponds to the NER template
 
@@ -38,10 +38,16 @@ def export_texts(
     except OSError:
         raise ValueError("Could not open/read file: {}".format(fname))
 
+    # Convert arguments to lists if needed
+    if isinstance(texts, str):
+        texts = [texts]
+    if isinstance(layers, list) and (len(layers) == 0 or isinstance(layers[0], dict)):
+        layers = [layers]
+
     if len(texts) != len(layers):
         raise ValueError("The is a mismatch between text and layer counts")
 
-    exported_attributes = list(REQUIRED_ATTRIBUTES.union(other_attributes))
+    exported_attributes = sorted(REQUIRED_ATTRIBUTES.union(other_attributes))
     json.dump([
         text_to_dict(text, layer, label_attribute, exported_attributes, text_name, labelset_name)
         for text, layer in zip(texts, layers)], output, indent=2)
@@ -65,7 +71,7 @@ def text_to_dict(
         if label is None:
             continue
 
-        annotation = {key: span[key] for key in exported_attributes}
+        annotation = {key: span[key] for key in exported_attributes if key in span.keys()}
         annotation['labels'] = [str(label)]
 
         predictions.append({
