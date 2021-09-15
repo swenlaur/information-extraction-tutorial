@@ -1,0 +1,104 @@
+[
+  {
+    "annotations": [],
+    "predictions": [
+      {
+        "result": [
+          {
+            "value": {
+              "start": 20,
+              "end": 23,
+              "text": "WHO",
+              "labels": [
+                "ORG"
+              ]
+            },
+            "to_name": "text",
+            "from_name": "label",
+            "type": "labels"
+          },
+          {
+            "value": {
+              "start": 38,
+              "end": 49,
+              "text": "Switzerland",
+              "labels": [
+                "LOC"
+              ]
+            },
+            "to_name": "text",
+            "from_name": "label",
+            "type": "labels"
+          },
+          {
+            "value": {
+              "start": 54,
+              "end": 65,
+              "text": "Ghebreyesus",
+              "labels": [
+                "PER"
+              ]
+            },
+            "to_name": "text",
+            "from_name": "label",
+            "type": "labels"
+          }
+        ]
+      }
+    ],
+    "data": {
+      "text": "The headquarters of WHO is located in Switzerland and Ghebreyesus is the head of it."
+    }
+  },
+  {
+    "annotations": [],
+    "predictions": [
+      {
+        "result": [
+          {
+            "value": {
+              "start": 20,
+              "end": 23,
+              "text": "WHO",
+              "labels": [
+                "ORG"
+              ]
+            },
+            "to_name": "text",
+            "from_name": "label",
+            "type": "labels"
+          },
+          {
+            "value": {
+              "start": 38,
+              "end": 49,
+              "text": "Switzerland",
+              "labels": [
+                "LOC"
+              ]
+            },
+            "to_name": "text",
+            "from_name": "label",
+            "type": "labels"
+          },
+          {
+            "value": {
+              "start": 54,
+              "end": 65,
+              "text": "Ghebreyesus",
+              "labels": [
+                "PER"
+              ]
+            },
+            "to_name": "text",
+            "from_name": "label",
+            "type": "labels"
+          }
+        ]
+      }
+    ],
+    "data": {
+      "text": "The headquarters of WHO is located in Switzerland and Ghebreyesus is the head of it."
+    }
+  }
+]
