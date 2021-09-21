@@ -48,10 +48,18 @@ Electronic health records are mostly unstructured:
 Information extraction allows us: 
 \begin{diamonds}
 \item to fill gaps in the structured data (\textcolor{blue}{allergies})
-\item to describe environment factors (\textcolor{blue}{lifestyle and patient history})
+\item to describe environment factors (\textcolor{blue}{lifestyle and family history})
 \item to refine diagnosis description (\textcolor{blue}{infraction subtypes}) 
 \item to refined treatment outcomes (\textcolor{blue}{stroke complications}) 
 \end{diamonds}
+
+
+\foilhead[-1cm]{Example. Measurement extraction}
+
+Extract dated lab measurements from a patient health record.\vspace*{1cm}
+
+
+\centerline{\includegraphics[width=18cm, trim= 0cm -0.25cm 0cm 0cm, clip]{measurement-extraction-task}}
 
 
 \foilhead[-1cm]{NLP tasks in medical domain}
@@ -81,12 +89,6 @@ Information extraction allows us:
 \end{minipage}
 
 
-\foilhead[-1cm]{Example. Measurement extraction}
-
-Extract dated lab measurements from a patient health record.\vspace*{1cm}
-
-
-\centerline{\includegraphics[width=18cm, trim= 0cm -0.25cm 0cm 0cm, clip]{measurement-extraction-task}}
 
 
 \foilhead[-1cm]{How to carry out information extraction}
@@ -124,7 +126,7 @@ Extract dated lab measurements from a patient health record.\vspace*{1cm}
 \begin{minipage}[b]{17cm}
 \begin{triangles}
 \item Charset detection (\textcolor{blue}{utf-8, Latin-1, Windows-1257})
-\item Recovery from encoding errors(\textcolor{blue}{\hspace*{-0.2ex}\raisebox{-0.8ex}{\includegraphics[scale=1]{jyrioo-1.pdf}} $\leadsto$ j\"uri\"o\"o}) 
+\item Recovery from encoding errors (\textcolor{blue}{\hspace*{-0.2ex}\raisebox{-0.8ex}{\includegraphics[scale=1]{jyrioo-1.pdf}} $\leadsto$ j\"uri\"o\"o}) 
 \end{triangles}\vspace*{3ex}
 Tokenisation
 \begin{triangles}
@@ -217,16 +219,16 @@ Regular expression is a way to specify tokens with fixed structure:
 \item special symbols, headers
 \end{triangles} \vspace*{3ex}
 
-Do \textbf{not} use regular expression for predictable variations in term lists
+Do \textbf{not} use regular expression for predictable variations in term lists.
 \begin{triangles}
-\item handling long term lists is much more efficient  
-\item you might get \textcolor{blue}{\texttt{a|ab|abc}} vs \textcolor{blue}{\texttt{abc|ab|a}} problems
+\item handling long term lists is much more efficient.  
+\item you might get \textcolor{blue}{\texttt{a|ab|abc}} vs \textcolor{blue}{\texttt{abc|ab|a}} problems.
 \end{triangles} \vspace*{3ex}
 
-Software development practices
+Software development practices:
 \begin{triangles}
-\item Write test cases for surprise 
-\item Maintain common library of regular expressions    
+\item Write test cases for each surprise. 
+\item Maintain common library of regular expressions.    
 \end{triangles}   
 
 
@@ -326,19 +328,19 @@ Tokenisation is ambiguous in practice
 
 \foilhead[-1cm]{Conclusion}
 
-Advantages of rule-based methods
+Advantages of rule-based methods:
 \begin{triangles}
-\item Easy to achieve decent progress
-\item Do not need extensive manual annotations
-\item A good baseline for segmentation tasks   
+\item Easy to achieve decent progress.
+\item Do not need extensive manual annotations.
+\item A good baseline for segmentation tasks.   
 \end{triangles}
 \vspace*{2cm}
 
-Disadvantages of rule-based methods
+Disadvantages of rule-based methods:
 \begin{triangles}
-\item Manual derivation of rules is hard
-\item Curation of background information is hard
-\item Progressively harder to improve the performance 
+\item Manual derivation of rules is hard.
+\item Curation of background information is hard.
+\item Progressively harder to improve the performance. 
 \end{triangles}
 \vspace*{3ex}
 
